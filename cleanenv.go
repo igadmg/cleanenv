@@ -157,7 +157,12 @@ func parseFile(path string, cfg interface{}) error {
 
 // ParseYAML parses YAML from reader to data structure
 func ParseYAML(r io.Reader, str interface{}) error {
-	return yaml.NewDecoder(r).Decode(str)
+	l, err := yaml.NewLoader(r)
+	if err != nil {
+		return err
+	}
+
+	return l.Load(str)
 }
 
 // ParseJSON parses JSON from reader to data structure
