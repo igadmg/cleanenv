@@ -1540,7 +1540,7 @@ func TestParseJSON(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			var cfg config
 			var err error
-			if err := ParseJSON(tt.r, &cfg); (err != nil) != tt.wantErr {
+			if err = ParseJSON(tt.r, &cfg); (err != nil) != tt.wantErr {
 				t.Errorf("ParseJSON() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			if err == nil && !reflect.DeepEqual(&cfg, tt.want) {
@@ -1598,7 +1598,7 @@ two = 2`),
 		t.Run(tt.name, func(t *testing.T) {
 			var cfg config
 			var err error
-			if err := ParseTOML(tt.r, &cfg); (err != nil) != tt.wantErr {
+			if err = ParseTOML(tt.r, &cfg); (err != nil) != tt.wantErr {
 				t.Errorf("ParseTOML() error = %v, wantErr %v", err, tt.wantErr)
 			}
 			if err == nil && !reflect.DeepEqual(&cfg, tt.want) {
